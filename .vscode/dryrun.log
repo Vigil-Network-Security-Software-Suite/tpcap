@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/conner/vigil/tpcap'
+make: Leaving directory '/home/conner/vigil/tpcap'
+ 
+make: *** No targets.  Stop.
+
