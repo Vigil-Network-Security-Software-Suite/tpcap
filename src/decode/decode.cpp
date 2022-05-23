@@ -2,6 +2,7 @@
 #include <fstream>
 #include "../globals.hpp"
 #include <stdio.h>
+#include "eth.hpp"
 using namespace std;
 void get_pcap_info(std::ifstream& ofs){
   struct pcap_filehdr file_header;
@@ -23,5 +24,11 @@ void get_pcap_info(std::ifstream& ofs){
 }
 
 void decode_loop(std::ifstream& ifs){
-  
+  while(true){
+    packet temp;
+    ifs.read((char *)&temp,sizeof(temp));
+    unsigned char pkt_data[1550];
+    ifs.read((char*)&pkt_data,temp.cap_len);
+    ethernet_decode(pkt_data);
+  }
 }

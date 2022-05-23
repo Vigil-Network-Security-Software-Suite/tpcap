@@ -14,6 +14,7 @@ int main(int argc, char ** argv){
     return -1;
   }
   get_pcap_info(pf);
+  decode_loop(pf);
   pf.close();
   
 
