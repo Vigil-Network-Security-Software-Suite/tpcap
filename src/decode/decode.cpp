@@ -2,6 +2,7 @@
 #include <fstream>
 #include "../globals.hpp"
 #include <stdio.h>
+#include "../utils.hpp"
 #include "eth.hpp"
 using namespace std;
 void get_pcap_info(std::ifstream& ofs){
@@ -30,6 +31,7 @@ void decode_loop(std::ifstream& ifs){
     ifs.read((char *)&temp,sizeof(temp));
     unsigned char pkt_data[1550];
     ifs.read((char*)&pkt_data,temp.cap_len);
+    printf("%s ",ts_to_date(temp.ts_var_sec));
     ethernet_decode(pkt_data);
 
 
