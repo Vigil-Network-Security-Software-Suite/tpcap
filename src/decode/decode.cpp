@@ -24,11 +24,14 @@ void get_pcap_info(std::ifstream& ofs){
 }
 
 void decode_loop(std::ifstream& ifs){
-  while(true){
+  while(ifs.peek() != EOF){
+    
     packet temp;
     ifs.read((char *)&temp,sizeof(temp));
     unsigned char pkt_data[1550];
     ifs.read((char*)&pkt_data,temp.cap_len);
     ethernet_decode(pkt_data);
+
+
   }
 }
