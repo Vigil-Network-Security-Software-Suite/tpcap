@@ -2,6 +2,7 @@
 #include <fstream>
 #include "../globals.hpp"
 #include <iostream>
+#include <sstream>
 using namespace std;
 void get_pcap_info(std::ifstream& ofs){
   struct pcap_filehdr file_header;
@@ -17,4 +18,11 @@ void get_pcap_info(std::ifstream& ofs){
     cout << "Unknown timestamp" << endl;
     exit(EXIT_FAILURE);
   }
+
+  std::ostringstream version;
+  version << file_header.mjr_version << "." << file_header.mnr_version;
+  cout << "Version: " << version.str() << endl;
+
+  cout << "Snaplen: " << file_header.snaplen << endl;
+
 }
