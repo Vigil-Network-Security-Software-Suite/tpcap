@@ -21,3 +21,7 @@ void get_pcap_info(std::ifstream& ofs){
 
   printf("Snaplen: %d\n",file_header.snaplen);
 }
+
+void decode_loop(std::ifstream& ifs){
+  
+}

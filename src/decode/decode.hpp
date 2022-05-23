@@ -16,6 +16,6 @@ struct pcap_filehdr{
 };
 
 void get_pcap_info(std::ifstream&);
-
+void decode_loop(std::ifstream&);
 
 #endif /* DECODE_HPP*/
