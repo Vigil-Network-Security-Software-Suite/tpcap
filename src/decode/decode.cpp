@@ -1,28 +1,23 @@
 #include "decode.hpp"
 #include <fstream>
 #include "../globals.hpp"
-#include <iostream>
-#include <sstream>
+#include <stdio.h>
 using namespace std;
 void get_pcap_info(std::ifstream& ofs){
   struct pcap_filehdr file_header;
   
   ofs.read((char*)&file_header,sizeof(file_header));
   if(file_header.magic == 0xa1b2c3d4){
-    cout << "Microsecond timestamp" << endl;
+    printf("Microsecond timestamp\n");
     time_type = TT_MS;
   } else if(file_header.magic == 0xa1b23cd4){
-    cout << "Nanosecond timestamp" << endl;
+    printf("Nanosecond timestamp\n");
     time_type = TT_NS;
   } else {
-    cout << "Unknown timestamp" << endl;
+    printf("Unknown timestamp: 0x%02x",file_header.magic);
     exit(EXIT_FAILURE);
   }
+  printf("Version: %d.%d\n",file_header.mjr_version,file_header.mnr_version);
 
-  std::ostringstream version;
-  version << file_header.mjr_version << "." << file_header.mnr_version;
-  cout << "Version: " << version.str() << endl;
-
-  cout << "Snaplen: " << file_header.snaplen << endl;
-
+  printf("Snaplen: %d\n",file_header.snaplen);
 }
