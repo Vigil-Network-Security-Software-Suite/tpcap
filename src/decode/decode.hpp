@@ -1,6 +1,7 @@
-#pragma once
-
+#ifndef DECODE_HPP
+#define DECODE_HPP
 #include <inttypes.h>
+#include <fstream>
 
 struct pcap_filehdr{
   uint32_t magic;
@@ -14,3 +15,7 @@ struct pcap_filehdr{
   unsigned int linktype:  28;
 };
 
+void get_pcap_info(std::ifstream&);
+
+
+#endif /* DECODE_HPP*/
