@@ -16,6 +16,7 @@ char * decode_hw_addr(uint8_t * bytes){
 }
 
 char * ts_to_date(uint32_t ts){
+  memset(&buffer,0,sizeof(buffer));
   time_t t = (long)ts;
   struct tm __time = *localtime(&t);
     sprintf(buffer,"%d-%02d-%02d %02d:%02d:%02d",
