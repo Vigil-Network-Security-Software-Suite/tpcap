@@ -9,8 +9,8 @@ using namespace std;
 int main(int argc, char ** argv){
   // std::string filename = argv[2];
   ifstream pf(argv[1], ios::out | ios::binary);
-  if(!pf){
-    printf("Failed to open test file\n");
+  if(!pf){;
+    perror("Failed to open test file");
     return -1;
   }
   get_pcap_info(pf);
