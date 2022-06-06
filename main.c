@@ -5,7 +5,7 @@
 
 
 int main(int argc, char ** argv){
-  if(argc == 1){
+  if(argc == 1){ 
     printf("Need pcap file\n");
     return 0;
   }

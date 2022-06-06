@@ -1,0 +1,20 @@
+------------------------------------- TPCAP -------------------------------------
+
+Desc: PCAP Parser and Analyzer
+
+Modules:
+  Raw packet printer
+  Time Shift
+  Rule application
+    - Vigil
+    - Snort?
+  Statistic ouput
+  Graphs
+  PDF or HTML output?
+  GUI?
+
+Potential Problems:
+  - Layer 2 protocols that are unknown(i.e. not ethernet)
+  - Time shift
+  - Portability
+
