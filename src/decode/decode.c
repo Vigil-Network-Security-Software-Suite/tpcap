@@ -1,9 +1,9 @@
-#include "decode.hpp"
+#include "decode.h"
 #include <fstream>
-#include "../globals.hpp"
+#include "../globals.h"
 #include <stdio.h>
-#include "../utils.hpp"
-#include "eth.hpp"
+#include "../utils.h"
+#include "eth.h"
 using namespace std;
 void get_pcap_info(std::ifstream& ofs){
   struct pcap_filehdr file_header;

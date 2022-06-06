@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
-#include "src/decode/decode.hpp"
+#include "src/decode/decode.h"
 
 
 using namespace std;

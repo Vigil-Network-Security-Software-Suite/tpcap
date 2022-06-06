@@ -1,9 +1,9 @@
-#include "eth.hpp"
+#include "eth.h"
 #include "../headers/ethhdr.h"
 #include <string.h>
 #include <stdio.h>
 #include <inttypes.h>
-#include "../utils.hpp"
+#include "../utils.h"
 void ethernet_decode(unsigned char * pkt){
   struct ethhdr * ethernet_header = (struct ethhdr *)pkt;
   char dest_mac[24];
