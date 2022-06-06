@@ -1,6 +1,7 @@
 #include "decode.h"
 #include "../globals.h"
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include "../utils.h"
 #include "eth.h"
@@ -25,14 +26,17 @@ void get_pcap_info(FILE* fp){
 }
 
 void decode_loop(FILE * fp){
-  while(!feof(fp)){
+  while(1){
     packet temp;
-    fread(&temp,sizeof(temp),0,fp);
+  
+    fread(&temp,sizeof(temp),1,fp);
     unsigned char pkt_data[1550];
+    memset(&pkt_data,0,sizeof(pkt_data));
     fread((char*)&pkt_data,temp.cap_len,1,fp);
     // printf("%s ",ts_to_date(temp.ts_seconds));
     ethernet_decode(pkt_data);
 
+    if(feof(fp)) break;
 
   }
 }
