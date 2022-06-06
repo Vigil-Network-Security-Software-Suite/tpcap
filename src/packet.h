@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PACKET_H
+#define PACKET_H
 #include <inttypes.h>
 typedef struct{
   uint32_t ts_seconds;
@@ -11,3 +12,5 @@ struct pkt_record{
   packet base_info;
   unsigned char * packet_data;
 };
+
+#endif /* PACKET_H */

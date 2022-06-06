@@ -1,0 +1,6 @@
+{
+  "files.associations": {
+    "decode.h": "c",
+    "packet.h": "c"
+  }
+}

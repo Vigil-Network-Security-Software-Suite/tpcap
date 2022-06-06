@@ -1,7 +1,7 @@
-#ifndef ETHERNET_HPP
-#define ETHERNET_HPP
+#ifndef ETHERNET_H
+#define ETHERNET_H
 
 #include <inttypes.h>
 void ethernet_decode(unsigned char *);
 char * decode_hw_addr(uint8_t *);
-#endif /* ETHERNET_HPP */
+#endif /* ETHERNET_H */

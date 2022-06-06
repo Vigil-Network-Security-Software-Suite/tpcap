@@ -1,14 +1,14 @@
 #include "decode.h"
-#include <fstream>
 #include "../globals.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include "../utils.h"
 #include "eth.h"
-using namespace std;
-void get_pcap_info(std::ifstream& ofs){
+void get_pcap_info(FILE* fp){
   struct pcap_filehdr file_header;
   
-  ofs.read((char*)&file_header,sizeof(file_header));
+  // fre((char*)&file_header,sizeof(file_header));
+  fread(&file_header,sizeof(file_header),1,fp);
   if(file_header.magic == 0xa1b2c3d4){
     printf("Microsecond timestamp\n");
     time_type = TT_MS;
@@ -24,14 +24,13 @@ void get_pcap_info(std::ifstream& ofs){
   printf("Snaplen: %d\n",file_header.snaplen);
 }
 
-void decode_loop(std::ifstream& ifs){
-  while(ifs.peek() != EOF){
-    
+void decode_loop(FILE * fp){
+  while(!feof(fp)){
     packet temp;
-    ifs.read((char *)&temp,sizeof(temp));
+    fread(&temp,sizeof(temp),0,fp);
     unsigned char pkt_data[1550];
-    ifs.read((char*)&pkt_data,temp.cap_len);
-    printf("%s ",ts_to_date(temp.ts_seconds));
+    fread((char*)&pkt_data,temp.cap_len,1,fp);
+    // printf("%s ",ts_to_date(temp.ts_seconds));
     ethernet_decode(pkt_data);
 
 
